@@ -12,27 +12,27 @@ namespace api_integrador_sistemas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Sistema()
         {
-            tbl_classe = new HashSet<Classe>();
-            tbl_integracao_sistema = new HashSet<IntegracaoSistema>();
-            tbl_integracao_sistema1 = new HashSet<IntegracaoSistema>();
+            Classe = new HashSet<Classe>();
+            IntegracaoSistemaPrimaria = new HashSet<IntegracaoSistema>();
+            IntegracaoSistemaSecundaria = new HashSet<IntegracaoSistema>();
         }
 
         public int Id { get; set; }
 
         [Required]
-        public string dsc_sistema { get; set; }
+        public string DscSistema { get; set; }
 
-        public int id_repositorio { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Classe> tbl_classe { get; set; }
+        public int IdRepositorio { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IntegracaoSistema> tbl_integracao_sistema { get; set; }
+        public virtual ICollection<Classe> Classe { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IntegracaoSistema> tbl_integracao_sistema1 { get; set; }
+        public virtual ICollection<IntegracaoSistema> IntegracaoSistemaPrimaria { get; set; }
 
-        public virtual Repositorio tbl_repositorio { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<IntegracaoSistema> IntegracaoSistemaSecundaria { get; set; }
+
+        public virtual Repositorio Repositorio { get; set; }
     }
 }

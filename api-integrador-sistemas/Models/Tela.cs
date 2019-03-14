@@ -12,13 +12,13 @@ namespace api_integrador_sistemas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Tela()
         {
-            tbl_permissao_usuario_tela = new HashSet<PermissaoUsuarioTela>();
+            PermissaoUsuarioTela = new HashSet<PermissaoUsuarioTela>();
         }
 
         public int Id { get; set; }
 
         [StringLength(100)]
-        public string dsc_tela { get; set; }
+        public string DscTela { get; set; }
 
         [StringLength(100)]
         public string titulo { get; set; }
@@ -27,6 +27,6 @@ namespace api_integrador_sistemas.Models
         public string url { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PermissaoUsuarioTela> tbl_permissao_usuario_tela { get; set; }
+        public virtual ICollection<PermissaoUsuarioTela> PermissaoUsuarioTela { get; set; }
     }
 }

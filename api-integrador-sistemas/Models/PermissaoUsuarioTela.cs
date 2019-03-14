@@ -12,26 +12,26 @@ namespace api_integrador_sistemas.Models
         [Key]
         [Column(Order = 0)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id_usuario { get; set; }
+        public int IdUsuario { get; set; }
 
         [Key]
         [Column(Order = 1)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id_tela { get; set; }
+        public int IdTela { get; set; }
 
         [Key]
         [Column(Order = 2)]
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public int id_permissao { get; set; }
+        public int IdPermissao { get; set; }
 
         [Required]
         [StringLength(1)]
-        public string ativo { get; set; }
+        public string Ativo { get; set; }
 
-        public virtual Permissao tbl_permissao { get; set; }
+        public virtual Permissao Permissao { get; set; }
 
-        public virtual Tela tbl_tela { get; set; }
+        public virtual Tela Tela { get; set; }
 
-        public virtual Usuario tbl_usuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
     }
 }

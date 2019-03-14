@@ -12,25 +12,25 @@ namespace api_integrador_sistemas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Metodo()
         {
-            tbl_integracao_metodo = new HashSet<IntegracaoMetodo>();
-            tbl_integracao_metodo1 = new HashSet<IntegracaoMetodo>();
+            IntegracaoMetodoPrimaria = new HashSet<IntegracaoMetodo>();
+            IntegracaoMetodoSecundaria = new HashSet<IntegracaoMetodo>();
         }
 
         public int Id { get; set; }
 
-        public string dsc_metodo { get; set; }
+        public string DscMetodo { get; set; }
 
-        public int? id_classe { get; set; }
+        public int? IdClasse { get; set; }
 
         [StringLength(100)]
         public string comentario { get; set; }
 
-        public virtual Classe tbl_classe { get; set; }
+        public virtual Classe Classe { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IntegracaoMetodo> tbl_integracao_metodo { get; set; }
+        public virtual ICollection<IntegracaoMetodo> IntegracaoMetodoPrimaria { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<IntegracaoMetodo> tbl_integracao_metodo1 { get; set; }
+        public virtual ICollection<IntegracaoMetodo> IntegracaoMetodoSecundaria { get; set; }
     }
 }

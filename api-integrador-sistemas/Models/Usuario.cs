@@ -12,7 +12,7 @@ namespace api_integrador_sistemas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Usuario()
         {
-            tbl_permissao_usuario_tela = new HashSet<PermissaoUsuarioTela>();
+            PermissaoUsuarioTela = new HashSet<PermissaoUsuarioTela>();
         }
 
         public int Id { get; set; }
@@ -36,6 +36,6 @@ namespace api_integrador_sistemas.Models
         public string sobrenome { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PermissaoUsuarioTela> tbl_permissao_usuario_tela { get; set; }
+        public virtual ICollection<PermissaoUsuarioTela> PermissaoUsuarioTela { get; set; }
     }
 }

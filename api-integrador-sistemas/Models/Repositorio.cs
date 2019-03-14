@@ -12,13 +12,13 @@ namespace api_integrador_sistemas.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Repositorio()
         {
-            tbl_sistema = new HashSet<Sistema>();
+            Sistema = new HashSet<Sistema>();
         }
 
         public int Id { get; set; }
 
         [Required]
-        public string dsc_repositorio { get; set; }
+        public string DscRepositorio { get; set; }
 
         [Required]
         public string url { get; set; }
@@ -34,6 +34,6 @@ namespace api_integrador_sistemas.Models
         public string ativo { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Sistema> tbl_sistema { get; set; }
+        public virtual ICollection<Sistema> Sistema { get; set; }
     }
 }

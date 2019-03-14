@@ -11,12 +11,12 @@ namespace api_integrador_sistemas.Models
     {
         public int Id { get; set; }
 
-        public int? id_sistema_primario { get; set; }
+        public int? IdSistemaPrimario { get; set; }
 
-        public int? id_sistema_secundario { get; set; }
+        public int? IdSistemaSecundario { get; set; }
 
-        public virtual Sistema tbl_sistema { get; set; }
+        public virtual Sistema SistemaPrimario { get; set; }
 
-        public virtual Sistema tbl_sistema1 { get; set; }
+        public virtual Sistema SistemaSecundario { get; set; }
     }
 }

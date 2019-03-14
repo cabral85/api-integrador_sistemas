@@ -12,18 +12,18 @@ namespace api_integrador_sistemas.Models
         {
         }
 
-        public virtual DbSet<Classe> tbl_classe { get; set; }
-        public virtual DbSet<Empresa> tbl_empresa { get; set; }
-        public virtual DbSet<IntegracaoClasse> tbl_integracao_classe { get; set; }
-        public virtual DbSet<IntegracaoMetodo> tbl_integracao_metodo { get; set; }
-        public virtual DbSet<IntegracaoSistema> tbl_integracao_sistema { get; set; }
-        public virtual DbSet<Metodo> tbl_metodo { get; set; }
-        public virtual DbSet<Permissao> tbl_permissao { get; set; }
-        public virtual DbSet<PermissaoUsuarioTela> tbl_permissao_usuario_tela { get; set; }
-        public virtual DbSet<Repositorio> tbl_repositorio { get; set; }
-        public virtual DbSet<Sistema> tbl_sistema { get; set; }
-        public virtual DbSet<Tela> tbl_tela { get; set; }
-        public virtual DbSet<Usuario> tbl_usuario { get; set; }
+        public virtual DbSet<Classe> Classe { get; set; }
+        public virtual DbSet<Empresa> Empresa { get; set; }
+        public virtual DbSet<IntegracaoClasse> IntegracaoClasse { get; set; }
+        public virtual DbSet<IntegracaoMetodo> IntegracaoMetodo { get; set; }
+        public virtual DbSet<IntegracaoSistema> IntegracaoSistema { get; set; }
+        public virtual DbSet<Metodo> Metodo { get; set; }
+        public virtual DbSet<Permissao> Permissao { get; set; }
+        public virtual DbSet<PermissaoUsuarioTela> PermissaoUsuarioTela { get; set; }
+        public virtual DbSet<Repositorio> Repositorio { get; set; }
+        public virtual DbSet<Sistema> Sistema { get; set; }
+        public virtual DbSet<Tela> Tela { get; set; }
+        public virtual DbSet<Usuario> Usuario { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -49,8 +49,8 @@ namespace api_integrador_sistemas.Models
 
             modelBuilder.Entity<Classe>()
                 .HasMany(e => e.metodo)
-                .WithOptional(e => e.tbl_classe)
-                .HasForeignKey(e => e.id_classe);
+                .WithOptional(e => e.Classe)
+                .HasForeignKey(e => e.IdClasse);
 
             modelBuilder.Entity<Empresa>()
                 .Property(e => e.nome_empresa)
@@ -78,7 +78,7 @@ namespace api_integrador_sistemas.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Metodo>()
-                .Property(e => e.dsc_metodo)
+                .Property(e => e.DscMetodo)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Metodo>()
@@ -86,37 +86,37 @@ namespace api_integrador_sistemas.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Metodo>()
-                .HasMany(e => e.tbl_integracao_metodo)
+                .HasMany(e => e.IntegracaoMetodoPrimaria)
                 .WithOptional(e => e.MetodoPrimario)
-                .HasForeignKey(e => e.id_metodo_primario);
+                .HasForeignKey(e => e.IdMetodoPrimario);
 
             modelBuilder.Entity<Metodo>()
-                .HasMany(e => e.tbl_integracao_metodo1)
+                .HasMany(e => e.IntegracaoMetodoSecundaria)
                 .WithOptional(e => e.MetodoSecundario)
-                .HasForeignKey(e => e.id_metodo_primario);
+                .HasForeignKey(e => e.IdMetodoSecundario);
 
             modelBuilder.Entity<Permissao>()
-                .Property(e => e.dsc_permissao)
+                .Property(e => e.DscPermissao)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Permissao>()
-                .Property(e => e.ativo)
+                .Property(e => e.Ativo)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Permissao>()
-                .HasMany(e => e.tbl_permissao_usuario_tela)
-                .WithRequired(e => e.tbl_permissao)
-                .HasForeignKey(e => e.id_permissao)
+                .HasMany(e => e.PermissaoUsuarioTela)
+                .WithRequired(e => e.Permissao)
+                .HasForeignKey(e => e.IdPermissao)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<PermissaoUsuarioTela>()
-                .Property(e => e.ativo)
+                .Property(e => e.Ativo)
                 .IsFixedLength()
                 .IsUnicode(false);
 
             modelBuilder.Entity<Repositorio>()
-                .Property(e => e.dsc_repositorio)
+                .Property(e => e.DscRepositorio)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Repositorio>()
@@ -137,32 +137,32 @@ namespace api_integrador_sistemas.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Repositorio>()
-                .HasMany(e => e.tbl_sistema)
-                .WithRequired(e => e.tbl_repositorio)
-                .HasForeignKey(e => e.id_repositorio)
+                .HasMany(e => e.Sistema)
+                .WithRequired(e => e.Repositorio)
+                .HasForeignKey(e => e.IdRepositorio)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Sistema>()
-                .Property(e => e.dsc_sistema)
+                .Property(e => e.DscSistema)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Sistema>()
-                .HasMany(e => e.tbl_classe)
+                .HasMany(e => e.Classe)
                 .WithOptional(e => e.sistema)
                 .HasForeignKey(e => e.idSistema);
 
             modelBuilder.Entity<Sistema>()
-                .HasMany(e => e.tbl_integracao_sistema)
-                .WithOptional(e => e.tbl_sistema)
-                .HasForeignKey(e => e.id_sistema_primario);
+                .HasMany(e => e.IntegracaoSistemaPrimaria)
+                .WithOptional(e => e.SistemaPrimario)
+                .HasForeignKey(e => e.IdSistemaPrimario);
 
             modelBuilder.Entity<Sistema>()
-                .HasMany(e => e.tbl_integracao_sistema1)
-                .WithOptional(e => e.tbl_sistema1)
-                .HasForeignKey(e => e.id_sistema_secundario);
+                .HasMany(e => e.IntegracaoSistemaSecundaria)
+                .WithOptional(e => e.SistemaSecundario)
+                .HasForeignKey(e => e.IdSistemaSecundario);
 
             modelBuilder.Entity<Tela>()
-                .Property(e => e.dsc_tela)
+                .Property(e => e.DscTela)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Tela>()
@@ -174,9 +174,9 @@ namespace api_integrador_sistemas.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Tela>()
-                .HasMany(e => e.tbl_permissao_usuario_tela)
-                .WithRequired(e => e.tbl_tela)
-                .HasForeignKey(e => e.id_tela)
+                .HasMany(e => e.PermissaoUsuarioTela)
+                .WithRequired(e => e.Tela)
+                .HasForeignKey(e => e.IdTela)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Usuario>()
@@ -205,9 +205,9 @@ namespace api_integrador_sistemas.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<Usuario>()
-                .HasMany(e => e.tbl_permissao_usuario_tela)
-                .WithRequired(e => e.tbl_usuario)
-                .HasForeignKey(e => e.id_usuario)
+                .HasMany(e => e.PermissaoUsuarioTela)
+                .WithRequired(e => e.Usuario)
+                .HasForeignKey(e => e.IdUsuario)
                 .WillCascadeOnDelete(false);
         }
     }
